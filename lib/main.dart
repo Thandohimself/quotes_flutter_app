@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'QuoteCard.dart';
 import 'quote.dart';
 
 void main() => runApp(MaterialApp(
@@ -19,30 +20,6 @@ class _QuoteListState extends State<QuoteList> {
     Quote(author: 'Pac', text: 'Is it a crime, to fight, for what is mine?')
   ];
 
-  Widget quoteTemplate(quote) {
-    return Card(
-      margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              quote.text,
-              style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
-            ),
-            SizedBox(
-              height: 6.0,
-            ),
-            Text(
-              quote.author,
-              style: TextStyle(fontSize: 14.0, color: Colors.grey[800]),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +31,9 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.deepOrangeAccent[100],
       ),
       body: Column(
-        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
       ),
     );
   }
 }
+
